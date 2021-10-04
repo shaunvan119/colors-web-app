@@ -12,12 +12,9 @@ let initialColors;
 //Color Generator
 
 function generateHex(){
-    const letters = "#0123456789ABCDEF";
-    let hash = "#";
-    for (let i = 0; i < 6; i++) {
-        hash += letters[Math.floor(Math.random() * 16)];
-    }
-    return hash;
+    const hexColor = chroma.random();
+    return hexColor;
+    
 }
 
 function randomColors() {
@@ -29,7 +26,18 @@ function randomColors() {
 
     div.style.backgroundColor = randomColor;
     hexText.innerText = randomColor;
+    //check for contrast
+    checkTextContrast(randomColor,hexText)
     });
+}
+
+function checkTextContrast(color, text) {
+    const luminance = chroma(color).luminance();
+    if(luminance > 0.5) {
+        text.style.color = "black";
+    } else {
+       text.style.color = "white"; 
+    }
 }
 
 randomColors();
