@@ -190,8 +190,16 @@ function copyToClipboard(hex) {
     const popupBox = popup.children[0];
     popup.classList.add("active");
     popupBox.classList.add("active");
-
 }
+
+function openAdjustmentPanel(index) {
+    sliderContainers[index].classList.toggle("active");
+}
+
+function closeAdjustmentPanel(index) {
+    sliderContainers[index].classList.remove("active");
+}
+
 
 randomColors();
 
