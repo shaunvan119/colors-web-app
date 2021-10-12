@@ -166,8 +166,10 @@ cursor: pointer;
 .copy-container.active {
     opacity: 1;
     pointer-events: all;
-    
+}
 
+.copy-popup.active{
+    transform: translateY(0rem);
 }
 
 
