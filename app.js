@@ -208,6 +208,30 @@ function lockLayer(e, index) {
 
 //Implement Save to palette and LOCAL STORAGE STUFF
 
+const saveBtn = document.querySelector(".save");
+const submitSave = document.querySelector(".submit-save");
+const closeSave = document.querySelector(".close-save");
+const SaveContainer= document.querySelector(".save-container");
+const saveInput = document.querySelector("save-container input");
+
+//Event Listeners 
+
+saveBtn.addEventListener("click", openPalette);
+closeSave.addEventListener("click", closePalette);
+
+
+function openPalette(e) {
+    const popup = SaveContainer.children[0]
+    SaveContainer.classList.add("active");
+    popup.classList.add("active");
+}
+
+function closePalette (e) {
+    const popup = SaveContainer.children[0]
+    SaveContainer.classList.remove("active");
+    popup.classList.add("remove");
+}
+
 
 randomColors();
 
