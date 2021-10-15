@@ -232,6 +232,35 @@ function closePalette (e) {
     popup.classList.add("remove");
 }
 
+function savePalette(e) {
+    SaveContainer.classList.remove("active");
+    popup.classList.remove("active");
+    const name = saveInput.value;
+    const colors = [];
+    currentHexes.forEach(hex => {
+        colors.push(hex.innerText);
+    });
+    //Generate Object
+    let palletNr = savedPalettes.length;
+    const paletteObj = { name, colors, nr: paletteNr };
+    savedPalettes.push(paletteObj);
+    // save to local storage
+
+    savetolocal(paletteObj);
+    saveInput.value = "";
+}
+
+function savetoLocal(paletteObj) {
+    let localPalettes;
+    if(localStorage.getItem("palettes") === null) {
+        localPalettes = [];
+    }else{
+        localPalettes = Json.parse(localStorage.getItem("palettes"));
+    }
+    localPalettes.push(paletteObj);
+    localStorage.setItem("palettes", JSON.stringify(localPalettes));
+}
+
 
 randomColors();
 
